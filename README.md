@@ -1,7 +1,12 @@
 # Vim Plugins
-Vim Plugins I use in a convenient to install repository
-## Installation
-Clone Repo, execute ```git submodule update --init --recursive```.
+A repository to conveniently install and sync vim plugins with 
+[Vundle](https://github.com/VundleVim/Vundle.Vim).
 
-Add the line ```so .../vim-plugins.vim``` at the beginning of the 
-```~/.vimrc``` file.
+## Installation
+Clone the repository, execute `$ git submodule update --init --recursive`.
+
+Add the line `so .../vim-plugins.vim` at the beginning of the `~/.vimrc` file.
+
+## Installation of New Plugins
+Add those plugins to the `vim-plugins.vim` file as described for 
+[Vundle](https://github.com/VundleVim/Vundle.Vim).
