@@ -9,8 +9,18 @@ execute 'set runtimepath+=' . expand('<sfile>:p:h') . '/bundle/Vundle.vim'
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Better markdown support
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+
+" Rust Support syntax + checker cargo (or rustc)
+Plugin 'rust-lang/rust.vim'
+
+" Fish completion ^X^O, ...
+Plugin 'Soares/fish.vim'
+
+" Syntax checking
+Plugin 'vim-syntastic/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -28,3 +38,15 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
+
+" Settings for plugins:
+
+" Syntastic Settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
