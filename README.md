@@ -7,7 +7,7 @@ A repository to conveniently install and sync vim plugins with
     `$ git clone https://github.com/datMaffin/vim-plugins.git`
  2. Add the line `so .../vim-plugins.vim` at the beginning of the `~/.vimrc` 
     file.
- 3. Run `:PluginInstall` once in vim. (Can fail while running in non POSIX-Shell.
+ 3. Run `:PluginInstall` once in vim. (Can fail while running vim in a non POSIX-Shell.
  Run `:set sh=sh` before.)
 
 ## Installation of New Plugins
