@@ -25,6 +25,9 @@ Plugin 'vim-syntastic/syntastic'
 " File browser
 Plugin 'scrooloose/nerdtree'
 
+" Better tex syntax highlighting
+Plugin 'gi1242/vim-tex-syntax'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
