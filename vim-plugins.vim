@@ -1,52 +1,44 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" Automatic Installation of Vim-Plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" set the runtime path to include Vundle and initialize
-execute 'set runtimepath+=' . expand('<sfile>:p:h') . '/bundle/Vundle.vim'
-
- call vundle#begin()
+call plug#begin()
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+Plug 'VundleVim/Vundle.vim'
 
 " Better markdown support
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 " Rust Support syntax + checker cargo (or rustc)
-Plugin 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 
 " Fish completion ^X^O, ...
-Plugin 'Soares/fish.vim'
+Plug 'Soares/fish.vim'
 
-" Syntax checking
-Plugin 'vim-syntastic/syntastic'
+" New Syntax checking
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 " File browser
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
 " Better tex syntax highlighting
-Plugin 'gi1242/vim-tex-syntax'
+Plug 'gi1242/vim-tex-syntax'
 
 " Better Javascript Support
-Plugin 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" If you are using the fish shell (or probably any other non posix-shell)
-" execute :set sh=sh before
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
+call plug#end()            " required
+
+
 
 " Settings for plugins:
 
@@ -62,15 +54,11 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 " Open NERDTree with ctrl-n
 map <C-n> :NERDTreeToggle<CR>
 
-" Syntastic Settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" LanguageClient settings
+set hidden
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " Vim JavaScript Settings
 let g:javascript_plugin_jsdoc = 1
