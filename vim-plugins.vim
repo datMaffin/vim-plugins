@@ -56,6 +56,38 @@ map <C-n> :NERDTreeToggle<CR>
 
 " LanguageClient settings
 set hidden
+let g:LanguageClient_serverCommands = {
+            \ 'rust': ['rustup', 'run', 'stable', 'rls']
+            \ }
+
+" Use symbols supported my mononoki font
+let g:LanguageClient_diagnosticsDisplay = {
+            \   1: {
+            \       "name": "Error",
+            \       "texthl": "ALEError",
+            \       "signText": "Σ",
+            \       "signTexthl": "ALEErrorSign",
+            \   },
+            \   2: {
+            \       "name": "Warning",
+            \       "texthl": "ALEWarning",
+            \       "signText": "ε",
+            \       "signTexthl": "ALEWarningSign",
+            \   },
+            \   3: {
+            \       "name": "Information",
+            \       "texthl": "ALEInfo",
+            \       "signText": "ι",
+            \       "signTexthl": "ALEInfoSign",
+            \   },
+            \   4: {
+            \       "name": "Hint",
+            \       "texthl": "ALEInfo",
+            \       "signText": "»",
+            \       "signTexthl": "ALEInfoSign",
+            \   },
+            \ }
+
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
